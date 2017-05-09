@@ -159,9 +159,8 @@ public class CallBack extends HttpServlet {
 			args = message.path("text").asText().split(" ", 2);
 
 			if ("幹".equals(args[0])) {
-				replyMessages.append("{\"type\":\"text\",\"text\":\"")
-						.append("你白癡喔!!!")
-						.append("\"},");
+				replyMessages.append("你白癡喔!!!")
+						;
 			} else if ("@time".equals(args[0])) {
 				replyMessages.append("{\"type\":\"text\",\"text\":\"")
 						.append("えへへ、どうぞです♪")
