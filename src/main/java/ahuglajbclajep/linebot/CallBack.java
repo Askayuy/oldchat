@@ -47,26 +47,6 @@ public class CallBack extends HttpServlet {
 	private static final String SECRET_KEY = System.getenv("LINE_BOT_CHANNEL_SECRET");
 	private static final String TOKEN = System.getenv("LINE_BOT_CHANNEL_TOKEN");
 
-	function _japan() {
-  clearTimeout(timer2);
-  request({
-    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
-    method: "GET"
-  }, function(error, response, body) {
-    if (error || !body) {
-      return;
-    } else {
-      var $ = cheerio.load(body);
-      var target = $(".rate-content-sight.text-right.print_hide");
-      console.log(target[15].children[0].data);
-      jp = target[15].children[0].data;
-      if (jp < 0.28) {
-        bot.push('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
-      }
-      timer2 = setInterval(_japan, 120000);
-    }
-  });
-}
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) {
 
@@ -178,18 +158,14 @@ public class CallBack extends HttpServlet {
 			String[] args;
 			args = message.path("text").asText().split(" ", 2);
 
-			if ("@qr".equals(args[0])) {
+			if ("測試".equals(args[0])) {
 				replyMessages.append("{\"type\":\"text\",\"text\":\"")
 						.append("OK!收到!")
 						.append("\"},");
 				try {
-					String url = createQR(args[1], message.path("id").asText());  // /tmp/hoge.jpgなど
-					replyMessages.append("{\"type\":\"image\",\"originalContentUrl\":\"")
-							.append("https://").append(APP_NAME).append(".herokuapp.com")
-							.append(url)
-							.append("\",\"previewImageUrl\":\"")
-							.append("https://").append(APP_NAME).append(".herokuapp.com")
-							.append(url);
+					replyMessages.append("{\"type\":\"text\",\"text\":\"")
+						.append("感謝測試!")
+						.append("\"},");
 
 				} catch (ArrayIndexOutOfBoundsException | IOException | WriterException e) {
 					replyMessages.append("{\"type\":\"text\",\"text\":\"")
