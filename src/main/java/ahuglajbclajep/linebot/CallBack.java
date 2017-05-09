@@ -158,13 +158,7 @@ public class CallBack extends HttpServlet {
 			String[] args;
 			args = message.path("text").asText().split(" ", 2);
 
-			if ("測試".equals(args[0])) {
-				replyMessages.append("{\"type\":\"text\",\"text\":\"")
-						.append("OK!收到!")
-						.append("\"},");
-				}
-
-			} else if ("@time".equals(args[0])) {
+			}  if ("@time".equals(args[0])) {
 				replyMessages.append("{\"type\":\"text\",\"text\":\"")
 						.append("えへへ、どうぞです♪")
 						.append("\"},")
