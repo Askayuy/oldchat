@@ -158,24 +158,10 @@ public class CallBack extends HttpServlet {
 			String[] args;
 			args = message.path("text").asText().split(" ", 2);
 
-			if ("@qr".equals(args[0])) {
+			if ("幹".equals(args[0])) {
 				replyMessages.append("{\"type\":\"text\",\"text\":\"")
-						.append("OK!收到!")
+						.append("你白癡喔!!!")
 						.append("\"},");
-				try {
-					String url = createQR(args[1], message.path("id").asText());  // /tmp/hoge.jpgなど
-					replyMessages.append("{\"type\":\"image\",\"originalContentUrl\":\"")
-							.append("https://").append(APP_NAME).append(".herokuapp.com")
-							.append(url)
-							.append("\",\"previewImageUrl\":\"")
-							.append("https://").append(APP_NAME).append(".herokuapp.com")
-							.append(url);
-
-				} catch (ArrayIndexOutOfBoundsException | IOException | WriterException e) {
-					replyMessages.append("{\"type\":\"text\",\"text\":\"")
-							.append("およ？およよ？");
-				}
-
 			} else if ("@time".equals(args[0])) {
 				replyMessages.append("{\"type\":\"text\",\"text\":\"")
 						.append("えへへ、どうぞです♪")
