@@ -162,14 +162,6 @@ public class CallBack extends HttpServlet {
 				replyMessages.append("{\"type\":\"text\",\"text\":\"")
 						.append("OK!收到!")
 						.append("\"},");
-				try {
-					replyMessages.append("{\"type\":\"text\",\"text\":\"")
-						.append("感謝測試!")
-						.append("\"},");
-
-				}catch (ArrayIndexOutOfBoundsException | IOException | WriterException e) {
-					replyMessages.append("{\"type\":\"text\",\"text\":\"")
-							.append("およ？およよ？");
 				}
 
 			} else if ("@time".equals(args[0])) {
