@@ -90,7 +90,7 @@ public class CallBack extends HttpServlet {
 			replyMess = createReply(events.path(0).path("message"));
 
 		} else if ("join".equals(events.path(0).path("type").asText())){  // トークの参加を受けたとき
-			replyMess = "\"messages\":[{\"type\":\"text\", \"text\":\"睦月、砲雷撃戦始めるよ♪\"}]";
+			replyMess = "\"messages\":[{\"type\":\"text\", \"text\":\"睦月、感謝您的邀請!\"}]";
 
 		} else {
 			res.setStatus(HttpServletResponse.SC_OK);
@@ -160,7 +160,7 @@ public class CallBack extends HttpServlet {
 
 			if ("@qr".equals(args[0])) {
 				replyMessages.append("{\"type\":\"text\",\"text\":\"")
-						.append("よぉーし、頑張るにゃ！")
+						.append("OK!收到!")
 						.append("\"},");
 				try {
 					String url = createQR(args[1], message.path("id").asText());  // /tmp/hoge.jpgなど
